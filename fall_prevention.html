@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脑卒中跌倒预防与安全管理 - 健康宣教与评估</title>
+    <style>
+        :root {
+            --primary: #2B7A78;
+            --primary-light: #3AAFA9;
+            --primary-dark: #1A5C5A;
+            --accent: #F4A261;
+            --accent-warm: #E76F51;
+            --bg-cream: #FEFAF6;
+            --bg-white: #FFFFFF;
+            --bg-light-blue: #F0F7F7;
+            --text-dark: #2C3E50;
+            --text-medium: #4A5568;
+            --text-light: #5A6C7D;
+            --border-soft: #E2E8F0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.10);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-heading: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            --font-body: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ============ 顶部导航栏 ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all var(--transition);
+            padding: 0 20px;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            gap: 16px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 1.15rem;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+
+        .navbar-brand .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 8px 14px;
+            border-radius: 24px;
+            transition: all var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: var(--bg-light-blue);
+            color: var(--primary);
+        }
+
+        .nav-links a.nav-cta {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            padding: 9px 18px;
+            box-shadow: 0 2px 8px rgba(43, 122, 120, 0.25);
+        }
+
+        .nav-links a.nav-cta:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 14px rgba(43, 122, 120, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            color: var(--text-dark);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--bg-light-blue);
+        }
+
+        .mobile-menu-btn svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 16px 20px;
+                gap: 4px;
+                box-shadow: var(--shadow-lg);
+                border-radius: 0 0 var(--radius-md) var(--radius-md);
+                border-bottom: 1px solid var(--border-soft);
+                z-index: 999;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                display: block;
+                text-align: center;
+                padding: 12px 16px;
+                border-radius: 10px;
+                font-size: 0.95rem;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* ============ 主体容器 ============ */
+        .main-content {
+            padding-top: 64px;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============ Hero 头部横幅 ============ */
+        .hero-section {
+            background: linear-gradient(160deg, #E8F4F3 0%, #D4ECEA 30%, #FEFAF6 70%, #FFF8F0 100%);
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -100px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(58, 175, 169, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -80px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(244, 162, 97, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1 1 400px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+            letter-spacing: 0.02em;
+        }
+        .hero-text h1 {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1.25;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+        }
+        .hero-text h1 .highlight {
+            color: var(--accent-warm);
+            position: relative;
+        }
+        .hero-text .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 24px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            min-width: 90px;
+            transition: all var(--transition);
+        }
+        .hero-stat:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .hero-stat .stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-warm);
+            line-height: 1;
+        }
+        .hero-stat .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .hero-visual {
+            flex: 0 0 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-icon-circle {
+            width: 220px;
+            height: 220px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+        .hero-icon-circle::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 3px dashed rgba(58, 175, 169, 0.3);
+            animation: spin 20s linear infinite;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-inner {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 24px;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-text .hero-desc {
+                max-width: 100%;
+                font-size: 1rem;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-icon-circle {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+            .hero-visual {
+                flex: 0 0 auto;
+            }
+        }
+
+        /* ============ 通用板块样式 ============ */
+        .section-pad {
+            padding: 50px 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .section-header .section-icon {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+        }
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.01em;
+        }
+        .section-header .section-subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+        .divider-accent {
+            width: 50px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 10px auto 0;
+        }
+
+        /* ============ 风险因素卡片 ============ */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .risk-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 28px 22px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid transparent;
+            transition: all var(--transition);
+            text-align: center;
+            cursor: default;
+        }
+        .risk-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #e0eceb;
+        }
+        .risk-card .card-emoji {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+        .risk-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+        .risk-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.55;
+        }
+
+        /* ============ 预防措施 - 手风琴样式 ============ */
+        .accordion-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .accordion-item {
+            background: #fff;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all var(--transition);
+            border: 1px solid transparent;
+        }
+        .accordion-item.active {
+            border-color: #d0e7e5;
+            box-shadow: var(--shadow-md);
+        }
+        .accordion-header {
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            user-select: none;
+            transition: background var(--transition);
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+        .accordion-header:hover {
+            background: #f9fcfb;
+        }
+        .accordion-header .acc-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        .accordion-header .acc-arrow {
+            margin-left: auto;
+            font-size: 1.1rem;
+            transition: transform var(--transition);
+            color: var(--primary-light);
+        }
+        .accordion-item.active .acc-arrow {
+            transform: rotate(180deg);
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 22px;
+        }
+        .accordion-item.active .accordion-body {
+            max-height: 300px;
+            padding: 0 22px 20px;
+        }
+        .accordion-body p,
+        .accordion-body ul {
+            font-size: 0.92rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+        .accordion-body ul {
+            padding-left: 20px;
+        }
+        .accordion-body ul li {
+            margin-bottom: 4px;
+        }
+
+        /* ============ 家居安全 - 图文卡片 ============ */
+        .home-safety-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+        }
+        .safety-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 22px 18px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            border-top: 4px solid var(--primary-light);
+        }
+        .safety-card:nth-child(even) {
+            border-top-color: var(--accent);
+        }
+        .safety-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .safety-card .safety-emoji {
+            font-size: 2.6rem;
+            margin-bottom: 8px;
+        }
+        .safety-card h4 {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        .safety-card p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        /* ============ 康复训练 ============ */
+        .exercise-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: stretch;
+        }
+        .exercise-card {
+            flex: 1 1 280px;
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 26px 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all var(--transition);
+            border-left: 5px solid var(--primary-light);
+        }
+        .exercise-card:nth-child(2) {
+            border-left-color: var(--accent);
+        }
+        .exercise-card:nth-child(3) {
+            border-left-color: #6C9BCF;
+        }
+        .exercise-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .exercise-card h4 {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+        }
+        .exercise-card .ex-emoji {
+            font-size: 2rem;
+        }
+        .exercise-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .exercise-card .ex-tip {
+            font-size: 0.8rem;
+            color: #fff;
+            background: var(--primary-light);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 14px;
+            align-self: flex-start;
+            font-weight: 500;
+        }
+        .exercise-card:nth-child(2) .ex-tip {
+            background: var(--accent);
+        }
+        .exercise-card:nth-child(3) .ex-tip {
+            background: #6C9BCF;
+        }
+
+        /* ============ 应急处理 - 步骤条 ============ */
+        .steps-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        .steps-vertical::before {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: #e0e8e7;
+            border-radius: 2px;
+        }
+        .step-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 14px 0;
+            position: relative;
+        }
+        .step-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            z-index: 1;
+            transition: all var(--transition);
+        }
+        .step-item:hover .step-num {
+            background: var(--primary-light);
+            color: #fff;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 8px rgba(58, 175, 169, 0.12);
+        }
+        .step-content {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+            transition: all var(--transition);
+        }
+        .step-item:hover .step-content {
+            box-shadow: var(--shadow-md);
+        }
+        .step-content h4 {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 2px;
+        }
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.55;
+        }
+
+        /* ============ 警示框/提示框 ============ */
+        .alert-box {
+            background: #FFF5F0;
+            border-left: 5px solid var(--accent-warm);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            margin-top: 28px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: #8B3A2A;
+            line-height: 1.6;
+        }
+        .alert-box .alert-emoji {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+        .tip-box {
+            background: #F0F9F8;
+            border-left: 5px solid var(--primary-light);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            line-height: 1.6;
+        }
+        .tip-box .tip-emoji {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        /* ============ 评估问卷新增样式 ============ */
+        .tabs-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border-radius: 28px;
+            border: 2px solid var(--primary-light);
+            background: #fff;
+            color: var(--primary-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 0.95rem;
+        }
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-weight: 500;
+        }
+        .quiz-option:hover {
+            background: #eef7f6;
+        }
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: #e0f2f0;
+            font-weight: 700;
+        }
+        .quiz-option input {
+            margin-right: 8px;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-light);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all var(--transition);
+        }
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-light);
+            color: var(--primary-dark);
+        }
+        .btn-outline:hover {
+            background: var(--bg-light-blue);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* ============ 页脚 ============ */
+        .site-footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.85);
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            margin-top: 40px;
+        }
+        .site-footer strong {
+            color: #fff;
+        }
+
+        /* ============ 回到顶部按钮 ============ */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition);
+            z-index: 900;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+            .risk-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .risk-card {
+                padding: 18px 12px;
+            }
+            .risk-card .card-emoji {
+                font-size: 2.2rem;
+            }
+            .risk-card h3 {
+                font-size: 0.95rem;
+            }
+            .home-safety-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 导航栏 ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#" class="navbar-brand">
+                <span class="logo-icon">🧠</span>
+                <span>卒中防跌倒宣教</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#risk">⚠️ 风险因素</a></li>
+                <li><a href="#prevention">🛡️ 预防措施</a></li>
+                <li><a href="#home">🏠 家居安全</a></li>
+                <li><a href="#exercise">💪 康复训练</a></li>
+                <li><a href="#emergency">🆘 应急处理</a></li>
+                <li><a href="#assessment-tools" class="nav-cta">📋 自我评估</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== 主体内容 ==================== -->
+    <div class="main-content">
+
+        <!-- Hero 头部 -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-text">
+                        <span class="hero-badge">📋 患者健康宣教</span>
+                        <h1>脑卒中后<span class="highlight">防跌倒</span>，<br>守护每一步安全</h1>
+                        <p class="hero-desc">脑卒中患者跌倒风险是普通人的<strong>2-3倍</strong>。了解风险、科学预防，让康复之路更稳健、更安心。</p>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="stat-num">30%</div>
+                                <div class="stat-label">卒中患者每年跌倒率</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="stat-num">60%</div>
+                                <div class="stat-label">跌倒可预防</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="stat-num">48h</div>
+                                <div class="stat-label">跌倒后黄金处理期</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-icon-circle">🚶‍♂️</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 风险因素 -->
+        <section id="risk" class="section-pad">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">⚠️</div>
+                    <h2>跌倒的常见危险因素</h2>
+                    <p class="section-subtitle">了解这些因素，是预防跌倒的第一步</p>
+                    <div class="divider-accent"></div>
+                </div>
+                <div class="risk-grid">
+                    <div class="risk-card">
+                        <div class="card-emoji">🦵</div>
+                        <h3>肢体无力/偏瘫</h3>
+                        <p>一侧肢体肌力下降，行走不稳，容易失去平衡。</p>
+                    </div>
+                    <div class="risk-card">
+                        <div class="card-emoji">👁️</div>
+                        <h3>视力或感知障碍</h3>
+                        <p>视野缺损、忽视一侧空间，无法及时发现障碍物。</p>
+                    </div>
+                    <div class="risk-card">
+                        <div class="card-emoji">💊</div>
+                        <h3>药物影响</h3>
+                        <p>降压药、镇静药可能导致头晕、血压波动或嗜睡。</p>
+                    </div>
+                    <div class="risk-card">
+                        <div class="card-emoji">🏠</div>
+                        <h3>居家环境隐患</h3>
+                        <p>地面湿滑、光线不足、杂物堆积、缺少扶手。</p>
+                    </div>
+                    <div class="risk-card">
+                        <div class="card-emoji">😰</div>
+                        <h3>害怕跌倒心理</h3>
+                        <p>因过度恐惧而减少活动，反而导致肌肉萎缩、平衡更差。</p>
+                    </div>
+                    <div class="risk-card">
+                        <div class="card-emoji">🩺</div>
+                        <h3>体位性低血压</h3>
+                        <p>突然站起时血压下降，引起头晕目眩，增加跌倒风险。</p>
+                    </div>
+                </div>
+                <div class="alert-box">
+                    <span class="alert-emoji">⚠️</span>
+                    <span><strong>请注意：</strong>如果您或家人存在以上多个因素，跌倒风险会显著叠加。请务必与康复医生、护士共同制定个性化的防跌倒计划。</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 预防措施 - 手风琴 -->
+        <section id="prevention" class="section-pad" style="background: var(--bg-light-blue);">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">🛡️</div>
+                    <h2>预防跌倒的关键措施</h2>
+                    <p class="section-subtitle">点击展开查看详细建议</p>
+                    <div class="divider-accent"></div>
+                </div>
+                <div class="accordion-list">
+                    <div class="accordion-item active">
+                        <div class="accordion-header">
+                            <span class="acc-icon">🩺</span> 定期复查与用药管理
+                            <span class="acc-arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <p>按时复诊，监测血压、血糖；遵医嘱服药，不随意增减药量。如服药后感到头晕，及时告知医生调整方案。</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="acc-icon">👟</span> 穿合适的鞋子
+                            <span class="acc-arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <p>选择防滑底、包裹性好、大小合适的鞋子。避免穿拖鞋或光脚行走，尤其是在瓷砖地面上。</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="acc-icon">🦯</span> 使用辅助器具
+                            <span class="acc-arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <p>根据康复师建议使用合适的手杖、助行器或轮椅。确保辅助器具高度调节正确，定期检查橡胶头磨损情况。</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="acc-icon">🐢</span> 动作缓慢、避免急躁
+                            <span class="acc-arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <p>
+                                遵循"三部曲"：<br>
+                                ① 醒后在床上躺30秒<br>
+                                ② 坐起后在床边靠30秒<br>
+                                ③ 站立稳定30秒后再迈步<br>
+                                避免猛然转头、弯腰捡物等危险动作。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="acc-icon">💧</span> 保持水分与营养
+                            <span class="acc-arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <p>脱水可导致血压波动和头晕。每日保证充足饮水（遵医嘱），均衡蛋白质与钙质摄入，维持肌肉力量。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 家居安全改造 -->
+        <section id="home" class="section-pad">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">🏠</div>
+                    <h2>居家安全环境改造</h2>
+                    <p class="section-subtitle">小小的改变，大大的安全</p>
+                    <div class="divider-accent"></div>
+                </div>
+                <div class="home-safety-grid">
+                    <div class="safety-card">
+                        <div class="safety-emoji">💡</div>
+                        <h4>充足照明</h4>
+                        <p>走廊、卧室、卫生间安装小夜灯，开关触手可及。</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-emoji">🧹</div>
+                        <h4>清除通道障碍</h4>
+                        <p>移除地面电线、杂物，保持走道畅通无阻。</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-emoji">🪑</div>
+                        <h4>稳固扶手</h4>
+                        <p>马桶旁、淋浴区、床边安装坚固扶手或抓杆。</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-emoji">🛁</div>
+                        <h4>防滑地面</h4>
+                        <p>卫生间铺设防滑垫，使用沐浴椅减少站立洗澡风险。</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-emoji">🪜</div>
+                        <h4>避免登高</h4>
+                        <p>常用物品放在伸手可及处，避免踩凳取物。</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="safety-emoji">📞</div>
+                        <h4>紧急呼叫</h4>
+                        <p>随身携带呼叫铃或手机，确保跌倒后能及时求助。</p>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <span class="tip-emoji">💡</span>
+                    <span><strong>小贴士：</strong>建议家属陪同患者一起进行"居家安全巡检"，用患者的角度去发现潜在隐患，共同改善。</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 康复训练 -->
+        <section id="exercise" class="section-pad" style="background: var(--bg-light-blue);">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">💪</div>
+                    <h2>康复训练与平衡锻炼</h2>
+                    <p class="section-subtitle">在专业指导下循序渐进，增强身体稳定性</p>
+                    <div class="divider-accent"></div>
+                </div>
+                <div class="exercise-row">
+                    <div class="exercise-card">
+                        <span class="ex-emoji">🧘</span>
+                        <h4>坐位平衡训练</h4>
+                        <p>在床边或椅子上练习坐直、重心左右转移，提高躯干控制能力。每天2-3次，每次5-10分钟。</p>
+                        <span class="ex-tip">适合早期康复</span>
+                    </div>
+                    <div class="exercise-card">
+                        <span class="ex-emoji">🚶</span>
+                        <h4>站立与步行训练</h4>
+                        <p>扶着稳固支撑物练习站立，逐步过渡到辅助下步行。注意步幅均匀、节奏稳定，避免匆忙。</p>
+                        <span class="ex-tip">核心训练项目</span>
+                    </div>
+                    <div class="exercise-card">
+                        <span class="ex-emoji">🔄</span>
+                        <h4>转向与跨障碍</h4>
+                        <p>练习原地转身、跨越低矮障碍物，提升动态平衡能力。务必在康复师或家属保护下进行。</p>
+                        <span class="ex-tip">进阶训练</span>
+                    </div>
+                </div>
+                <div class="alert-box" style="margin-top: 24px;">
+                    <span class="alert-emoji">🛑</span>
+                    <span><strong>安全第一：</strong>所有训练请在康复治疗师指导下进行。训练时务必有家属陪同保护，量力而行，不可过度疲劳。如出现明显头晕、胸闷等不适应立即停止并休息。</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 应急处理 -->
+        <section id="emergency" class="section-pad">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">🆘</div>
+                    <h2>跌倒后的应急处理</h2>
+                    <p class="section-subtitle">冷静应对，正确处理，减少二次伤害</p>
+                    <div class="divider-accent"></div>
+                </div>
+                <div class="steps-vertical">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h4>保持冷静，判断伤情</h4>
+                            <p>不要急于起身。先感受身体各部位是否有剧烈疼痛、是否能够活动四肢。如有骨折迹象（剧痛、畸形、无法移动），请勿移动，立即呼救。</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h4>寻求帮助</h4>
+                            <p>大声呼喊家人、按呼叫铃或拨打手机。如果独自一人且无法起身，可用身边物品敲击墙壁或地面引起注意。</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h4>安全起身（如无重伤）</h4>
+                            <p>先翻身至侧卧，用手臂撑起上半身，缓慢爬向稳固的家具（如椅子），借助支撑物跪起，再缓慢站立。全程动作要慢。</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <h4>及时就医评估</h4>
+                            <p>即使没有明显外伤，也建议尽快就医检查。头部碰撞后需警惕颅内出血的可能，尤其是有服用抗凝药的患者。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert-box" style="margin-top: 20px; background: #FFF0F0; border-left-color: #D32F2F;">
+                    <span class="alert-emoji">🚨</span>
+                    <span><strong>紧急情况：</strong>如出现意识不清、剧烈头痛、呕吐、肢体无法活动、大量出血等情况，请立即拨打<strong>120急救电话</strong>，不要擅自移动患者！</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 自我评估工具 ==================== -->
+        <section id="assessment-tools" class="section-pad" style="background: #f9fbfd;">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">📋</div>
+                    <h2>自我评估工具</h2>
+                    <p class="section-subtitle">完成问卷，了解您的跌倒风险、健康知识掌握度及服务满意度</p>
+                    <div class="divider-accent"></div>
+                </div>
+
+                <!-- 选项卡切换 -->
+                <div class="tabs-container">
+                    <button class="tab-btn active" data-tab="fall-risk">⚠️ 跌倒风险自评</button>
+                    <button class="tab-btn" data-tab="knowledge">📚 知识掌握调查</button>
+                    <button class="tab-btn" data-tab="satisfaction">😊 满意度调查</button>
+                </div>
+
+                <!-- 问卷容器 -->
+                <div class="card" style="background:#fff; border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-sm);">
+                    <div id="assessmentQuizContainer"></div>
+                    <div class="progress-bar"><div class="progress-fill" id="assessmentProgress"></div></div>
+                    <div style="display:flex; gap:12px; justify-content:space-between; align-items:center;">
+                        <button id="prevQuestionBtn" class="btn btn-outline" disabled>上一题</button>
+                        <span id="questionIndicator" style="font-weight:500;"></span>
+                        <button id="nextQuestionBtn" class="btn">下一题</button>
+                    </div>
+                    <div id="assessmentResult" style="margin-top:20px; display:none;"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>🧠 <strong>脑卒中跌倒预防与安全管理 — 患者健康宣教与评估</strong></p>
+            <p>本页面内容仅供参考，不能替代专业医疗建议。评估结果仅作风险提示，具体请咨询医生或康复治疗师。</p>
+            <p style="margin-top:6px; opacity:0.7;">© 2026 健康宣教平台 | 守护每一步安全</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        (function() {
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            // 导航栏滚动阴影
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 手风琴交互
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    accordionItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+
+            // 回到顶部按钮
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ==================== 自我评估问卷逻辑 ====================
+            const assessmentContainer = document.getElementById('assessmentQuizContainer');
+            const prevBtn = document.getElementById('prevQuestionBtn');
+            const nextBtn = document.getElementById('nextQuestionBtn');
+            const indicator = document.getElementById('questionIndicator');
+            const progressFill = document.getElementById('assessmentProgress');
+            const resultDiv = document.getElementById('assessmentResult');
+            const tabButtons = document.querySelectorAll('.tab-btn');
+
+            // 三个问卷的数据
+            const fallRiskQuestions = [
+                { text: "过去一年内您是否发生过跌倒？", options: ["否 (0分)", "是，1次 (1分)", "是，2次及以上 (2分)"] },
+                { text: "您是否需要辅助工具（手杖/助行器）行走？", options: ["不需要 (0分)", "偶尔使用 (1分)", "经常使用 (2分)"] },
+                { text: "您是否经常感觉下肢无力或不稳？", options: ["从不 (0分)", "有时 (1分)", "经常 (2分)"] },
+                { text: "您是否有视力问题（如视物模糊、视野缺损）？", options: ["无 (0分)", "轻度，已矫正 (1分)", "明显影响日常 (2分)"] },
+                { text: "您是否服用多种药物（≥4种）或镇静/降压药？", options: ["否 (0分)", "1-3种 (1分)", "4种及以上 (2分)"] },
+                { text: "您从坐位站起时是否感到头晕？", options: ["从不 (0分)", "偶尔 (1分)", "经常 (2分)"] },
+                { text: "您是否因为害怕跌倒而减少活动？", options: ["否 (0分)", "有一点 (1分)", "明显减少 (2分)"] },
+                { text: "您的居家环境是否存在安全隐患（如地面湿滑、缺少扶手）？", options: ["无 (0分)", "存在1-2项 (1分)", "存在多项 (2分)"] },
+                { text: "您是否经常需要夜间起床如厕？", options: ["否 (0分)", "偶尔 (1分)", "经常 (2分)"] },
+                { text: "您对预防跌倒的知识了解多少？", options: ["很了解 (0分)", "一般 (1分)", "不了解 (2分)"] }
+            ];
+
+            const knowledgeQuestions = [
+                { text: "脑卒中后跌倒风险因素认知", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "平衡功能自我评估方法", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "安全转移与移动技巧", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "辅助器具的正确使用", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "双重任务策略（如边走边说话）", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "跌倒应急处理", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "居家环境安全检查", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "训练计划制定与执行", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "随访安排与资源获取", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] },
+                { text: "药物与跌倒的关联", options: ["不了解 (0分)", "了解一点 (1分)", "了解 (2分)", "熟悉 (3分)"] }
+            ];
+
+            const satisfactionQuestions = [
+                { text: "对医院环境的评价" },
+                { text: "对病房安全设施的评价" },
+                { text: "入院时接诊评价" },
+                { text: "对护士服务态度的评价" },
+                { text: "对护士跌倒预防知识水平的评价" },
+                { text: "对护士技术水平的评价" },
+                { text: "对护士沟通能力的评价" },
+                { text: "对医生服务态度的评价" },
+                { text: "对医生技术水平的评价" },
+                { text: "对用药指导的满意程度" },
+                { text: "对跌倒预防训练指导的满意度" },
+                { text: "跌倒预防注意事项的介绍" },
+                { text: "医院收费的满意度" },
+                { text: "检查是否及时的满意度" },
+                { text: "跌倒预防训练效果的评价" },
+                { text: "出院后康复指导与随访" }
+            ];
+            const satisfactionOptions = ["不满意 (1分)", "一般 (2分)", "满意 (3分)", "非常满意 (4分)"];
+
+            let currentTab = 'fall-risk'; // 'fall-risk', 'knowledge', 'satisfaction'
+            let currentQuestion = 0;
+            let answers = [];
+
+            // 重置当前问卷状态
+            function resetQuiz() {
+                currentQuestion = 0;
+                if (currentTab === 'fall-risk') answers = new Array(fallRiskQuestions.length).fill(-1);
+                else if (currentTab === 'knowledge') answers = new Array(knowledgeQuestions.length).fill(-1);
+                else if (currentTab === 'satisfaction') answers = new Array(satisfactionQuestions.length).fill(-1);
+                resultDiv.style.display = 'none';
+                resultDiv.innerHTML = '';
+                nextBtn.disabled = false;
+                nextBtn.textContent = '下一题';
+                renderQuestion();
+            }
+
+            function getCurrentQuestions() {
+                if (currentTab === 'fall-risk') return fallRiskQuestions;
+                if (currentTab === 'knowledge') return knowledgeQuestions;
+                return satisfactionQuestions;
+            }
+
+            function getCurrentOptions() {
+                if (currentTab === 'satisfaction') return satisfactionOptions;
+                return getCurrentQuestions()[currentQuestion].options;
+            }
+
+            function renderQuestion() {
+                const questions = getCurrentQuestions();
+                if (questions.length === 0) return;
+                const q = questions[currentQuestion];
+                const options = getCurrentOptions();
+                let html = `<h3 style="margin-bottom:12px;">${currentQuestion+1}. ${q.text}</h3>`;
+                options.forEach((opt, idx) => {
+                    const checked = answers[currentQuestion] === idx ? 'checked' : '';
+                    const selectedClass = answers[currentQuestion] === idx ? 'selected' : '';
+                    html += `
+                        <label class="quiz-option ${selectedClass}" onclick="window.selectAssessmentOption(${currentQuestion}, ${idx})">
+                            <input type="radio" name="q${currentQuestion}" value="${idx}" ${checked}> ${opt}
+                        </label>`;
+                });
+                assessmentContainer.innerHTML = html;
+                indicator.textContent = `${currentQuestion+1} / ${questions.length}`;
+                progressFill.style.width = ((currentQuestion+1)/questions.length*100) + '%';
+                prevBtn.disabled = currentQuestion === 0;
+                if (currentQuestion === questions.length - 1) {
+                    nextBtn.textContent = '查看结果';
+                } else {
+                    nextBtn.textContent = '下一题';
+                }
+            }
+
+            window.selectAssessmentOption = function(qIdx, optIdx) {
+                answers[qIdx] = optIdx;
+                renderQuestion();
+            };
+
+            function nextQuestion() {
+                const questions = getCurrentQuestions();
+                if (answers[currentQuestion] === -1) {
+                    alert('请选择一个选项');
+                    return;
+                }
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    renderQuestion();
+                } else {
+                    showResult();
+                }
+            }
+
+            function prevQuestion() {
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    renderQuestion();
+                }
+            }
+
+            function showResult() {
+                let totalScore = 0;
+                let maxScore = 0;
+                let resultHTML = '';
+                if (currentTab === 'fall-risk') {
+                    totalScore = answers.reduce((s, v) => s + v, 0);
+                    maxScore = 20;
+                    let riskLevel = '', advice = '';
+                    if (totalScore <= 5) { riskLevel = '低风险'; advice = '保持良好习惯，定期复查，维持居家安全。'; }
+                    else if (totalScore <= 12) { riskLevel = '中风险'; advice = '存在跌倒隐患，建议与康复师沟通，加强平衡训练与环境改造。'; }
+                    else { riskLevel = '高风险'; advice = '跌倒风险较高，请务必立即进行专业评估，使用辅助设备，家属加强看护。'; }
+                    resultHTML = `<div style="background:#f0f9f8; padding:20px; border-radius:12px; text-align:center;">
+                        <h3>跌倒风险评估结果：<span style="color:var(--primary-dark);">${riskLevel}</span></h3>
+                        <p>总分 ${totalScore} / ${maxScore}</p>
+                        <p style="margin-top:8px;">${advice}</p>
+                    </div>`;
+                } else if (currentTab === 'knowledge') {
+                    totalScore = answers.reduce((s, v) => s + v, 0);
+                    maxScore = 30;
+                    let level = '';
+                    if (totalScore <= 10) level = '掌握不足';
+                    else if (totalScore <= 20) level = '基本掌握';
+                    else level = '良好掌握';
+                    resultHTML = `<div style="background:#eef7f6; padding:20px; border-radius:12px; text-align:center;">
+                        <h3>健康知识掌握程度：<span style="color:var(--primary-dark);">${level}</span></h3>
+                        <p>总分 ${totalScore} / ${maxScore}</p>
+                        <p style="margin-top:8px;">建议出院时、1个月、3个月后再次评估，以观察知识掌握变化。</p>
+                    </div>`;
+                } else if (currentTab === 'satisfaction') {
+                    totalScore = answers.reduce((s, v) => s + v + 1, 0); // 选项索引0-3对应1-4分
+                    maxScore = 64;
+                    let satisfactionLevel = '';
+                    if (totalScore >= 55) satisfactionLevel = '非常满意';
+                    else if (totalScore >= 40) satisfactionLevel = '满意';
+                    else if (totalScore >= 25) satisfactionLevel = '一般';
+                    else satisfactionLevel = '不满意';
+                    resultHTML = `<div style="background:#fef7f0; padding:20px; border-radius:12px; text-align:center;">
+                        <h3>患者满意度：<span style="color:var(--accent-warm);">${satisfactionLevel}</span></h3>
+                        <p>总分 ${totalScore} / ${maxScore}</p>
+                        <p style="margin-top:8px;">您的反馈将帮助我们持续改进服务质量，感谢评价！</p>
+                    </div>`;
+                }
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = resultHTML;
+                nextBtn.disabled = true;
+            }
+
+            // 选项卡切换
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetTab = this.dataset.tab;
+                    if (targetTab === currentTab) return;
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTab = targetTab;
+                    resetQuiz();
+                });
+            });
+
+            // 按钮事件绑定
+            nextBtn.addEventListener('click', nextQuestion);
+            prevBtn.addEventListener('click', prevQuestion);
+
+            // 初始化第一个问卷
+            resetQuiz();
+        })();
+    </script>
+</body>
+</html>
